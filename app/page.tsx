@@ -7,8 +7,10 @@ export const metadata: Metadata = {
   description: 'Currency Converter App',
 }
 
+const NEXT_URL = process.env.NEXT_URL || "http://localhost:3000";
+
 async function fetchData(): Promise<ExchangeRate[]> {
-  const res = await fetch('http://localhost:3000/api/rates', { next: { revalidate: 3600 } });
+  const res = await fetch('NEXT_URL/api/rates', { next: { revalidate: 3600 } });
   const data = await res.json();
   return data.exchangeRates;
 }
